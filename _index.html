@@ -1,0 +1,470 @@
+<?php
+//*********************** Главная страница *************************
+session_start();
+$period_cookie = 2592000; // 30 дней (2592000 секунд)
+
+if ($_GET) {
+  setcookie("utm_source", $_GET['utm_source'], time() + $period_cookie);
+  setcookie("utm_medium", $_GET['utm_medium'], time() + $period_cookie);
+  setcookie("utm_term", $_GET['utm_term'], time() + $period_cookie);
+  setcookie("utm_content", $_GET['utm_content'], time() + $period_cookie);
+  setcookie("utm_campaign", $_GET['utm_campaign'], time() + $period_cookie);
+}
+
+if (!isset($_SESSION['utms'])) {
+  $_SESSION['utms'] = array();
+  $_SESSION['utms']['utm_source'] = '';
+  $_SESSION['utms']['utm_medium'] = '';
+  $_SESSION['utms']['utm_term'] = '';
+  $_SESSION['utms']['utm_content'] = '';
+  $_SESSION['utms']['utm_campaign'] = '';
+}
+$_SESSION['utms']['utm_source'] = $_GET['utm_source'] ? $_GET['utm_source'] : $_COOKIE['utm_source'];
+$_SESSION['utms']['utm_medium'] = $_GET['utm_medium'] ? $_GET['utm_medium'] : $_COOKIE['utm_medium'];
+$_SESSION['utms']['utm_term'] = $_GET['utm_term'] ? $_GET['utm_term'] : $_COOKIE['utm_term'];
+$_SESSION['utms']['utm_content'] = $_GET['utm_content'] ? $_GET['utm_content'] : $_COOKIE['utm_content'];
+$_SESSION['utms']['utm_campaign'] = $_GET['utm_campaign'] ? $_GET['utm_campaign'] : $_COOKIE['utm_campaign'];
+
+?>
+<!DOCTYPE html>
+<html lang="uk_UA">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPIRT.STORE - Спирт люкс качества!</title>
+
+  
+  <meta property="og:title" content="SPIRT.STORE - Спирт люкс качества!" />
+  <meta property="og:description" content="" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/reboot.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="site">
+    <main class="main">
+      <header class="header">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md no-mob">
+              <div class="small-text">
+                ТОВ "ОЛЕКСАНДРІЯ БЛІГ"
+              </div>
+            </div>
+            <div class="col-auto phone-numbers">
+              <a href="tel:+380997800182" class="tel">+38(099)-780-01-82</a>
+              <a href="tel:+380981190653" class="tel">+38(098)-119-06-53</a>
+              <a href="tel:+380950952954" class="tel">+38(095)-095-29-54</a>
+              <a href="tel:+380730260870" class="tel">+38(073)-026-08-70</a>
+            </div>
+
+            <div class="col-md-auto no-mob">
+              <div class="small-text">ПРАЦЮЄМО НА РИНКУ<br />З 2013 РОКУ</div>
+            </div>
+
+            <div class="col-auto">
+              <a href="#form" class="btn">ЗАЛИШИТИ ЗАЯВКУ</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-info">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <h1>
+                SPIRT.STORE
+              </h1>
+
+              <p class="main-info-desc">ПРОДАЖ ПШЕНИЧНОГО СПИРТУ 96,6%
+                КРАЩОЇ ЯКОСТІ ОПТ ТА РОЗДРІБ</p>
+
+
+
+
+            </div>
+            <div class="col-lg-5">
+              <div class="main-info-images">
+                <div class="image-pack">
+                  <img src="img/spirt-main.jpeg" alt="" />
+                </div>
+                <div class="image-price">
+                  <div class="image-price__items">
+                    <div>ЗВИЧАЙНА ЦІНА:<span class="old">1600ГРН</span></div>
+                    <div>ЦІНА ЗІ ЗНИЖКОЮ:<span class="accent">1300ГРН</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="main-form">
+                <form action="#" class="form form-1">
+                  <div class="row">
+                    <div class="input-group col-xl-4 col-md-6">
+                      <input type="text" name="name" placeholder="Ваше ім'я" />
+                    </div>
+                    <div class="input-group input-group-tel col-xl-4 col-md-6">
+                      <input type="tel" name="phone" placeholder="+380 (99) 999-99-99" />
+                    </div>
+                    <div class="input-group col-xl-4 col-md-12">
+                      <button class="btn btn-accent">ЗАЛИШИТИ ЗАЯВКУ</button>
+                    </div>
+                  </div>
+
+                  <div class="form-err"></div>
+                </form>
+
+
+                <div class="form-inf">
+                  КУПУЙТЕ ТІЛЬКИ У НАЙКРАЩИХ ВИРОБНИКІВ УКРАЇНИ
+                  ТА БУДЬТЕ ВПЕВНЕНІ У ВИСОКІЙ ЯКОСТІ СПИРТУ
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section class="section about triangle-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="about-image">
+              <div class="about-image__text">Вибір 2022</div>
+              <img src="img/image.jpg" alt="" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about-content">
+              <h2>Про продукт</h2>
+              <p>
+                Наша команда, зібрана з професіоналів які виготовляють спирт найкращої якості в Україні. Ми працюємо понад 5 років та співпрацюємо з державними підприємствами. У виробництві спирту використовуємо злакові культури вищої якості, таким чином спирт виходить із 96.6% вмістом етанолу.
+                Країна виробник - Україна
+              </p>
+              <span>ГЕНЕРАЛЬНИЙ ДИРЕКТОР
+                ТОВ «ОЛЕКСАНДРІЯ БЛІГ»
+                Б.С. СОЛОШНІКОВ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="about-inf">
+              ЗАЛЕЖНО ВІД СТУПЕНЯ ОЧИЩЕННЯ В НАС ВИ ЗМОЖЕТЕ ПРИДБАТИ ТАКІ СОРТИ СПИРТУ: ЛЮКС, АЛЬФА ТА ПШЕНИЧНИЙ. ВЕСЬ СПИРТ ВИРОБЛЯЮТЬ ІЗ ДОБІРНОГО ЗЕРНА ПШЕНИЦІ.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about-inf">
+              ДВА ОСТАННІ СОРТИ МАЮТЬ НАЙВИЩУ ЯКІСТЬ, СМАКОВІ ХАРАКТЕРИСТИКИ ТА ПРОХОДЯТЬ БАГАТОРІВНЕВЕ ОЧИЩЕННЯ. АЛЕ ТРОХИ ВОНИ ВІДРІЗНЯЮТЬСЯ ЗА СВОЄЮ МІЦНІСТЮ, БО ПШЕНИЧНИЙ ВВАЖАЄТЬСЯ НАЙМ‘ЯКІШИМ.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section buy">
+      <div class="container">
+        <h2 class="center">ЗАМОВИТИ ПШЕНИЧНИЙ СПИРТ</h2>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="buy-item">
+              <div class="buy-item__img"><img src="img/spirt-lux.jpeg" alt=""></div>
+              <h3 class="buy-item__title">
+                СПИРТ ЛЮКС 96,3%
+              </h3>
+              <ul class="buy-item__list">
+                <li>5 л – 630 грн</li>
+                <li>10 л – 1 250 грн</li>
+                <li>20 л – 2 450 грн</li>
+                <li>100 л – 11 000 грн</li>
+                <li>500 л – 54 000 грн</li>
+              </ul>
+              <a href="#form" class="btn btn-accent buy-item__btn">Замовити</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="buy-item">
+              <div class="buy-item__img"><img src="img/spirt-alpha.jpeg" alt=""></div>
+              <h3 class="buy-item__title">
+                СПИРТ АЛЬФА 96,6%
+              </h3>
+              <ul class="buy-item__list">
+                <li>5 л – 650 грн</li>
+                <li>10 л – 1 300 грн</li>
+                <li>20 л – 2 500 грн</li>
+                <li>100 л – 11 100 грн</li>
+                <li>500 л – 54 500 грн</li>
+              </ul>
+              <a href="#form" class="btn btn-accent buy-item__btn">Замовити</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="buy-item">
+              <div class="buy-item__img"><img src="img/spirt-main.jpeg" alt=""></div>
+              <h3 class="buy-item__title">
+                СПИРТ ПШЕНИЧНИЙ 96,5%
+              </h3>
+              <ul class="buy-item__list">
+                <li>5 л – 700 грн</li>
+                <li>10 л – 1 400 грн</li>
+                <li>20 л – 2 600 грн</li>
+                <li>100 л – 11 700 грн</li>
+                <li>500 л – 56 000 грн</li>
+              </ul>
+              <a href="#form" class="btn btn-accent buy-item__btn">Замовити</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why">
+      <div class="container">
+        <h2>
+          Основні причини чому саме наша компанія займає лідируючі позиції серед виробників в Україні:
+        </h2>
+
+        <h4>5 ПРИЧИН</h4>
+
+        <ul class="why-items">
+          <li class="why-item">
+            <span>01</span>
+            <p>
+              <strong>ШВИДКА ДОСТАВКА</strong><br>
+              ДОСТАВИМО ПШЕНИЧНИЙ СПИРТ У БУДЬ-ЯКЕ МІСТО УКРАЇНИ ПРОТЯГОМ 2 ДНІВ
+            </p>
+          </li>
+          <li class="why-item">
+            <span>02</span>
+            <p>
+              <strong>ОБМІН ПРОДУКТУ</strong><br>
+              ВАРТІСТЬ ДОСТАВКИ ОПЛАЧУЄ КЛІЄНТ
+            </p>
+          </li>
+          <li class="why-item">
+            <span>03</span>
+            <p>
+              <strong>НАЙКРАЩА ЯКІСТЬ ПШЕНИЧНОГО СПИРТУ</strong><br>
+              У ВИРОБНИЦТВІ СПИРТУ ВИКОРИСТОВУЄМО ЗЛАКОВІ КУЛЬТУРИ НАЙВИЩОЇ ЯКОСТІ, ЕТАНОЛ 96.6%
+            </p>
+          </li>
+          <li class="why-item">
+            <span>04</span>
+            <p>
+              <strong>НАЙКРАЩІ УМОВИ
+                ОПЛАТИ ЗА СПИРТ</strong><br>
+              ПРАЦЮЄМО БЕЗ ПЕРЕДОПЛАТИ. ОПЛАТА ЗДІЙСНЮЄТЬСЯ ПІСЛЯ ОТРИМАННЯ ТОВАРУ НА НОВІЙ ПОШТІ
+            </p>
+          </li>
+          <li class="why-item">
+            <span>05</span>
+            <p>
+              <strong>ВИКОРИСТАННЯ СПИРТУ</strong><br>
+              СПИРТ З НАШОГО ВИРОБНИЦТВА ВІДМІННО ПІДІЙДЕ ДЛЯ АЛКОГОЛЬНИХ НАПОЇВ, ОСКІЛЬКИ ВІН ОЧИЩУЄТЬСЯ ЗА СУЧАСНИМИ ТЕХНОЛОГІЯМИ
+            </p>
+          </li>
+        </ul>
+
+        <div class="center">
+          <a href="#form" class="btn btn-accent">ЗАЛИШИТИ ЗАЯВКУ</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section opt">
+      <div class="container">
+        <h2 class="center">Переваги для сегменту клієнтів - опт:</h2>
+        <div class="row justify-content-center">
+          <div class="col-xl-8">
+            <p>
+              1. Постійні знижки для тих, кого цікавить якість та безперебійна робота наших спеціалістів<br>
+              2. Індивідуальний підхід до кожного<br>
+              3. Надання персонального менеджера який відповість на будь-які Ваші питання<br>
+              4. Завжди контролюємо актуальність цін <br>
+              5. Якщо менеджер не в змозі вирішити питання, у Вас є можливість замовлення зворотного зв’язку від керівництва
+            </p>
+
+            <p><strong>ВАЖЛИВА ІНФОРМАЦІЯ!</strong><br> Під час замовлення об'ємів від 100л+ ми працюємо передоплатою, розмір якої залежить від вартості доставки.</p>
+
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xl-8">
+            <form action="#" class="form form-2">
+              <div class="row">
+                <div class="input-group col-xl-4 col-md-4">
+                  <input type="text" name="name" placeholder="Ваше ім'я" />
+                </div>
+                <div class="input-group input-group-tel col-xl-4 col-md-4">
+                  <input type="tel" name="phone" placeholder="+380 (99) 999-99-99" />
+                </div>
+                <div class="input-group col-xl-4 col-md-4">
+                  <button class="btn btn-accent">Залишити заявку</button>
+                </div>
+              </div>
+
+              <div class="form-err"></div>
+            </form>
+
+            <div class="form-inf">КУПУЙТЕ ТІЛЬКИ У НАЙКРАЩИХ ВИРОБНИКІВ УКРАЇНИ
+              ТА БУДЬТЕ ВПЕВНЕНІ У ВИСОКІЙ ЯКОСТІ СПИРТУ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="main" id="form">
+      <div class="main-info">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <h1>
+                SPIRT.STORE
+              </h1>
+
+              <p class="main-info-desc">ПРОДАЖ ПШЕНИЧНОГО СПИРТУ 96,6%
+                КРАЩОЇ ЯКОСТІ ОПТ ТА РОЗДРІБ</p>
+
+
+
+
+            </div>
+            <div class="col-lg-5">
+              <div class="main-info-images">
+                <div class="image-pack">
+                  <img src="img/spirt-main.jpeg" alt="" />
+                </div>
+                <div class="image-price">
+                  <div class="image-price__items">
+                    <div>ЗВИЧАЙНА ЦІНА:<span class="old">1600ГРН</span></div>
+                    <div>ЦІНА ЗІ ЗНИЖКОЮ:<span class="accent">1300ГРН</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="main-form">
+                <form action="#" class="form form-3">
+                  <div class="row">
+                    <div class="input-group col-xl-4 col-md-6">
+                      <input type="text" name="name" placeholder="Ваше ім'я" />
+                    </div>
+                    <div class="input-group input-group-tel col-xl-4 col-md-6">
+                      <input type="tel" name="phone" placeholder="+380 (99) 999-99-99" />
+                    </div>
+                    <div class="input-group col-xl-4 col-md-12">
+                      <button class="btn btn-accent">ЗАЛИШИТИ ЗАЯВКУ</button>
+                    </div>
+                  </div>
+
+                  <div class="form-err"></div>
+                </form>
+
+
+                <div class="form-inf">
+                  КУПУЙТЕ ТІЛЬКИ У НАЙКРАЩИХ ВИРОБНИКІВ УКРАЇНИ
+                  ТА БУДЬТЕ ВПЕВНЕНІ У ВИСОКІЙ ЯКОСТІ СПИРТУ
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <header class="header">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md no-mob">
+              <div class="small-text">
+                ТОВ "ОЛЕКСАНДРІЯ БЛІГ"
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <a href="tel:+380669926829" class="tel">+38(066) 992-68-29</a>
+            </div>
+
+            <div class="col-md-auto no-mob">
+              <div class="small-text">ПРАЦЮЄМО НА РИНКУ<br />З 2013 РОКУ</div>
+            </div>
+
+          </div>
+        </div>
+      </header>
+    </section>
+
+
+    <div class="socials">
+      <a href="#" class="social-link" data-phone='{
+        "+38(099)-780-01-82": "https://t.me/+380997800182"
+        }' data-text="Напишіть нам в Telegram"><img src="img/tg.svg" alt=""></a>
+      <a href="#" class="social-link" data-phone='{
+        "+38(099)-780-01-82": "viber://chat?number=%2B380997800182"
+        }' data-text="Напишіть нам у Viber"><img src="img/viber.svg" alt=""></a>
+
+      <a href="#" class="social-link" data-phone='{
+        "+38(099)-780-01-82": "tel:+380997800182",
+          "+38(098)-119-06-53": "tel:+380981190653",
+          "+38(095)-095-29-54": "tel:+380950952954",
+          "+38(073)-026-08-70": "tel:+380730260870"
+        }' data-text="Зателефонуйте одному з менеджерів"><img src="img/phone.svg" alt=""></a>
+
+    </div>
+
+
+
+
+
+  </div>
+
+
+  <div class="modal-tel">
+    <div class="modal-tel__close">x</div>
+
+    <div class="modal-tel__text"></div>
+
+    <div class="modal-tel__phone"></div>
+  </div>
+
+
+
+  <div class="modal modal-old" style="display: none;">
+    <div class="modal-wrap">
+      <div class="modal-content">
+        <h4>Вам вже є 18?</h4>
+        <p>це контент для дорослих</p>
+        <a href="#" class="btn btn-accent" data-old="yes">Так</a>
+        <a href="#" class="btn btn-gray" data-old="no">Ні</a>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/imask.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
