@@ -22,14 +22,55 @@
   </head>
 
   <body>
+
+    <nav class="nav MB nav-mobile">
+      <div class="TOV">ТОВ "ОЛЕКСАНДРІЯ БЛІГ"</div>
+        <div class="nav-container">
+          <h3>Категорії</h3>
+          <a href="#spirt">Спирт</a>
+          <a href="#koniak">Коньяк</a>
+          <a href="#">Категорія</a>
+          <a href="#">Категорія</a>
+          <a href="#">Категорія</a>
+          <a href="#">Категорія</a>
+        </div>
+
+        <div class="phone-numbers">
+          <div class="phone-numbers-item">
+            <img src="img/tell.svg" alt="" width="16" height="16" />
+            <a href="tel:+380997800182" class="tel">(099) 780 01 82</a>
+          </div>
+          <div class="phone-numbers-item">
+            <img src="img/tell.svg" alt="" width="16" height="16" />
+            <a href="tel:+380981190653" class="tel">(098) 119 06 53</a>
+          </div>
+          <div class="phone-numbers-item">
+            <img src="img/tell.svg" alt="" width="16" height="16" />
+            <a href="tel:+380950952954" class="tel">(095) 095 29 54</a>
+          </div>
+          <div class="phone-numbers-item">
+            <img src="img/tell.svg" alt="" width="16" height="16" />
+            <a href="tel:+380730260870" class="tel">(073) 026 08 70</a>
+          </div>
+        </div>
+        
+    </nav>
+
     <div class="site">
       <header class="header">
         <div class="container">
           <div class="row align-items-center justify-content-between">
+            <div class="col-auto MB">
+              <div class="burger">
+                <div class="burger-box">
+                  <div class="burger-inner"></div>
+                </div>
+              </div>
+            </div>
             <div class="col-auto no-mob">
               <div class="small-text">ТОВ "ОЛЕКСАНДРІЯ БЛІГ"</div>
             </div>
-            <div class="col col-mob">
+            <div class="col col-mob PK">
               <div class="phone-numbers">
                 <div class="phone-numbers-item">
                   <img src="img/tell.svg" alt="" width="16" height="16" />
@@ -54,12 +95,25 @@
               <div class="small-text">ПРАЦЮЄМО НА РИНКУ<br />З 2013 РОКУ</div>
             </div> -->
 
-            <div class="col-auto col-mob">
+            <div class="col-auto">
               <a href="#form" class="btn">ЗАЛИШИТИ ЗАЯВКУ</a>
             </div>
           </div>
         </div>
       </header>
+
+      <nav class="nav nav-pk PK">
+        <div class="container">
+          <div class="nav-container">
+            <a href="#spirt">Спирт</a>
+            <a href="#koniak">Коньяк</a>
+            <a href="#">Категорія</a>
+            <a href="#">Категорія</a>
+            <a href="#">Категорія</a>
+            <a href="#">Категорія</a>
+          </div>
+        </div>
+      </nav>
 
       <main class="main">
         <div class="banner" style="background-image: url('img/bg-main.png')"></div>
@@ -116,9 +170,8 @@
 
       <section class="catalog" id="catalog">
         <div class="container">
-          <!-- <h2 class="center">Каталог</h2> -->
-          <div class="catalog-category">
-            <h3 class="catalog-category-title">Каталог</h3>
+          <div class="catalog-category" id="spirt">
+            <h3 class="catalog-category-title">Спирт</h3>
             <div class="catalog-grid">
               <div class="card">
                 <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
@@ -216,71 +269,117 @@
                   <a href="#modal-card" class="btn" data-product-id="4">Замовити</a>
                 </div>
               </div>
-              <div class="card">
-                <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
-                <div class="card__title">Водка Борис Ельцин (Boris Jelzin) 3 литра</div>
-                <div class="card__price">245 грн.</div>
-                <ul class="card__prices">
-                  <li>От 6 шт. - 215 грн.</li>
-                  <li>От 18 шт. - 210 грн.</li>
-                  <li>От 30 шт. - 205 грн.</li>
-                  <li>От 60 шт. - 200 грн.</li>
-                </ul>
-                <div class="card__btn">
-                  <a href="#modal-card" class="btn" data-product-id="5">Замовити</a>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
-                <div class="card__title">Водка Борис Ельцин (Boris Jelzin) 3 литра</div>
-                <div class="card__price">245 грн.</div>
-                <ul class="card__prices">
-                  <li>От 6 шт. - 215 грн.</li>
-                  <li>От 18 шт. - 210 грн.</li>
-                  <li>От 30 шт. - 205 грн.</li>
-                  <li>От 60 шт. - 200 грн.</li>
-                </ul>
-                <div class="card__btn">
-                  <a href="#modal-card" class="btn" data-product-id="6">Замовити</a>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
-                <div class="card__title">Водка Борис Ельцин (Boris Jelzin) 3 литра</div>
-                <div class="card__price">245 грн.</div>
-                <ul class="card__prices">
-                  <li>От 6 шт. - 215 грн.</li>
-                  <li>От 18 шт. - 210 грн.</li>
-                  <li>От 30 шт. - 205 грн.</li>
-                  <li>От 60 шт. - 200 грн.</li>
-                </ul>
-                <div class="card__btn">
-                  <a href="#modal-card" class="btn" data-product-id="7">Замовити</a>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
-                <div class="card__title">Водка Борис Ельцин (Boris Jelzin) 3 литра</div>
-                <div class="card__price">245 грн.</div>
-                <ul class="card__prices">
-                  <li>От 6 шт. - 215 грн.</li>
-                  <li>От 18 шт. - 210 грн.</li>
-                  <li>От 30 шт. - 205 грн.</li>
-                  <li>От 60 шт. - 200 грн.</li>
-                </ul>
-                <div class="card__btn">
-                  <a href="#modal-card" class="btn" data-product-id="8">Замовити</a>
-                </div>
-              </div>
             </div>
             <!-- <div class="catalog-btn-all">
               <a href="#" class="btn">Показати весь товар</a>
             </div> -->
           </div>
+
+          <div class="catalog-category" id="koniak">
+            <h3 class="catalog-category-title">Коньяк</h3>
+            <div class="catalog-grid">
+              <div class="card">
+                <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
+                <div class="card__title">Водка Борис Ельцин (Boris Jelzin) 3 литра</div>
+                <div class="card__price">245 грн.</div>
+                <ul class="card__prices">
+                  <li>От 6 шт. - 215 грн.</li>
+                  <li>От 18 шт. - 210 грн.</li>
+                  <li>От 30 шт. - 205 грн.</li>
+                  <li>От 60 шт. - 200 грн.</li>
+                </ul>
+                <table class="card__table" style="display: none">
+                  <tbody>
+                    <tr>
+                      <td>Бренд</td>
+                      <td>Finlandia</td>
+                    </tr>
+                    <tr>
+                      <td>Крепость</td>
+                      <td>40 %</td>
+                    </tr>
+                    <tr>
+                      <td>Объем</td>
+                      <td>3 л</td>
+                    </tr>
+                    <tr>
+                      <td>Страна</td>
+                      <td>Финляндия</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="card__btn">
+                  <a href="#modal-card" class="btn" data-product-id="1">Замовити</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__image"><img src="img/spirt-alpha.jpeg" alt="" /></div>
+                <div class="card__title">Спирт альфа</div>
+                <div class="card__price">605 грн.</div>
+                <ul class="card__prices">
+                  <li>От 6 шт. - 215 грн.</li>
+                  <li>От 18 шт. - 210 грн.</li>
+                  <li>От 30 шт. - 205 грн.</li>
+                  <li>От 60 шт. - 200 грн.</li>
+                </ul>
+                <table class="card__table" style="display: none">
+                  <tbody>
+                    <tr>
+                      <td>Бренд</td>
+                      <td>Finlandia</td>
+                    </tr>
+                    <tr>
+                      <td>Крепость</td>
+                      <td>40 %</td>
+                    </tr>
+                    <tr>
+                      <td>Объем</td>
+                      <td>3 л</td>
+                    </tr>
+                    <tr>
+                      <td>Страна</td>
+                      <td>Финляндия</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="card__btn">
+                  <a href="#modal-card" class="btn" data-product-id="2">Замовити</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__image"><img src="img/spirt-lux.jpeg" alt="" /></div>
+                <div class="card__title">Спирт Люкс</div>
+                <div class="card__price">700 грн.</div>
+                <ul class="card__prices">
+                  <li>От 6 шт. - 215 грн.</li>
+                  <li>От 18 шт. - 210 грн.</li>
+                  <li>От 30 шт. - 205 грн.</li>
+                  <li>От 60 шт. - 200 грн.</li>
+                </ul>
+                <div class="card__btn">
+                  <a href="#modal-card" class="btn" data-product-id="3">Замовити</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__image"><img src="img/catalog/1.webp" alt="" /></div>
+                <div class="card__title">Водка Борис Ельцин (Boris Jelzin) 3 литра</div>
+                <div class="card__price">245 грн.</div>
+                <ul class="card__prices">
+                  <li>От 6 шт. - 215 грн.</li>
+                  <li>От 18 шт. - 210 грн.</li>
+                  <li>От 30 шт. - 205 грн.</li>
+                  <li>От 60 шт. - 200 грн.</li>
+                </ul>
+                <div class="card__btn">
+                  <a href="#modal-card" class="btn" data-product-id="4">Замовити</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="benefit">
+      <!-- <section class="benefit">
         <div class="container">
           <div class="row">
             <div class="col-md-4">
@@ -320,7 +419,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <section class="about">
         <div class="container">
@@ -340,7 +439,11 @@
                   виробництві спирту використовуємо злакові культури вищої якості, таким чином спирт
                   виходить із 96.6% вмістом етанолу. Країна виробник - Україна
                 </p>
-                <span>ГЕНЕРАЛЬНИЙ ДИРЕКТОР<br> ТОВ «ОЛЕКСАНДРІЯ БЛІГ»<br> Б.С. СОЛОШНІКОВ</span>
+                <span
+                  >ГЕНЕРАЛЬНИЙ ДИРЕКТОР<br />
+                  ТОВ «ОЛЕКСАНДРІЯ БЛІГ»<br />
+                  Б.С. СОЛОШНІКОВ</span
+                >
               </div>
             </div>
           </div>
@@ -455,14 +558,12 @@
     <!-- MODAL PRODUCT -->
 
     <div class="modal-product closed">
-      
       <div class="modal-product__body">
-
         <div class="modal-product__close">x</div>
 
         <div class="modal-product__info">
           <div class="modal-product__image"><img src="img/catalog/1.webp" alt="" /></div>
-  
+
           <div class="modal-product__content">
             <div class="modal-product__title">test</div>
             <div class="modal-product__price">4050 грн.</div>
@@ -498,7 +599,7 @@
         <div class="modal-product__form">
           <div class="main-form">
             <form action="#" class="form form-2">
-              <input type="hidden" value="" name="product">
+              <input type="hidden" value="" name="product" />
               <div class="input-group">
                 <input type="text" name="name" placeholder="Ваше ім'я" />
               </div>
@@ -508,7 +609,7 @@
               <div class="input-group input-group-modal">
                 <div class="counter">
                   <span class="down" onClick="decreaseCount(event, this)">-</span>
-                  <input type="text" value="1" name="counts"/>
+                  <input type="text" value="1" name="counts" />
                   <span class="up" onClick="increaseCount(event, this)">+</span>
                 </div>
 
@@ -519,7 +620,6 @@
             </form>
           </div>
         </div>
-
       </div>
     </div>
 

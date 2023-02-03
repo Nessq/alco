@@ -5,16 +5,41 @@ var inputsTel_2 = document.querySelector('.form-2 input[type="tel"]');
 var inputsTel_3 = document.querySelector('.form-3 input[type="tel"]');
 
 var countMasks = 0;
+
+// Burger burger
+let isMenuOpen = false;
+const $btnBurger = document.querySelector('.burger');
+const $mobileNav = document.querySelector('.nav-mobile');
+const $site = document.querySelector('.site');
+
+// forms
+var form1 = document.querySelector('.form-1');
+var form2 = document.querySelector('.form-2');
+
+// show more
+const showMore = document.querySelector('.catalog-btn-all');
+
+// open modal
+let isOpenModalProduct = false;
+const $modal = document.querySelector('.modal-product');
+
+// anchor
+const anchors = document.querySelectorAll('a[href*="#"]');
+
+formSend(form1);
+formSend(form2);
+
+newSocialApp();
+showMoreInit();
+initAnchorScroll();
+initAnchorActiveScroll();
+initModalProductEvents();
+initOpenMobileMenu();
 // var mask1 = IMask(inputsTel_1, {
 //   mask: '+{380} (99) 999-99-99',
 //   //placeholderChar: '_',
 //   lazy: false,
 // });
-
-
-var form1 = document.querySelector('.form-1');
-var form2 = document.querySelector('.form-2');
-
 
 function formError(form, text, success) {
   var inf = form.querySelector('.form-err');
@@ -27,35 +52,34 @@ function formSend(form, mask) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-
     const $name = form.querySelector('input[name="name"]');
     const $tel = form.querySelector('input[name="phone"]');
     const $productId = form.querySelector('input[name="product"]');
     const $counts = form.querySelector('input[name="counts"]');
     const dataForm = {};
 
-    if($name) dataForm.name = $name.value;
-    if($tel) dataForm.tel = $tel.value.replace(/\D+/g,"");
-    if($productId) dataForm.id = $productId.value;
-    if($counts) dataForm.counts = $counts.value;
+    if ($name) dataForm.name = $name.value;
+    if ($tel) dataForm.tel = $tel.value.replace(/\D+/g, '');
+    if ($productId) dataForm.id = $productId.value;
+    if ($counts) dataForm.counts = $counts.value;
     console.log(dataForm);
     if ((dataForm.tel.length !== 12 && dataForm.tel.length !== 10) || dataForm.name.length < 2) {
       return formError(form, "Введіть коректний номер телефону або ім'я!");
     }
-    if(dataForm.counts && !(dataForm.counts > 0)){
-      return formError(form, "Кількість введена не вірно!");
+    if (dataForm.counts && !(dataForm.counts > 0)) {
+      return formError(form, 'Кількість введена не вірно!');
     }
-    
+
     form.querySelector('.form-err').innerHTML = '';
     var btn = form.querySelector('button');
     btn.style.opacity = '0.5';
     btn.style.pointerEvents = 'none';
     btn.classList.add('btn-load');
 
-
     sendCrm(sendURL, dataForm, (res) => {
       if (res.type === 'success') {
-        window.location.href = window.location.origin + '/thanks.php?name=' + dataForm.name + '&phone=' + dataForm.tel;
+        window.location.href =
+          window.location.origin + '/thanks.php?name=' + dataForm.name + '&phone=' + dataForm.tel;
       } else {
         btn.style.opacity = '1';
         btn.style.pointerEvents = 'all';
@@ -66,20 +90,13 @@ function formSend(form, mask) {
     });
   });
 }
-
-formSend(form1);
-formSend(form2);
-// formSend(form3, mask3);
-
-// fetch data
-
 function sendCrm(url, data, success) {
   fetch(url, {
     method: 'post',
     body: JSON.stringify(data),
     headers: {
-        'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
     .then((response) => {
       return response.json();
@@ -92,31 +109,8 @@ function sendCrm(url, data, success) {
     });
 }
 
-// const yearsOld = localStorage.getItem('years');
-
-// if (yearsOld !== 'yes') {
-//   const $body = document.body;
-//   const $modal = document.querySelector('.modal-old');
-
-//   $body.classList.add('open-modal');
-//   $modal.style.display = 'flex';
-
-//   const $btnYes = document.querySelector('a.btn[data-old="yes"]');
-//   const $btnNo = document.querySelector('a.btn[data-old="no"]');
-
-//   $btnYes.addEventListener('click', (e) => {
-//     $body.classList.remove('open-modal');
-//     $modal.style.display = 'none';
-
-//     localStorage.setItem('years', 'yes');
-//   });
-
-//   $btnNo.addEventListener('click', (e) => {
-//     $modal.querySelector('.modal-content').innerHTML = '<div>Дякуємо за розуміння</div>';
-//   });
-// }
-
-var socialsLink = document.querySelectorAll('.socials a');
+function newSocialApp() {
+  var socialsLink = document.querySelectorAll('.socials a');
 var phoneModal = document.querySelector('.modal-tel');
 var phoneModalText = phoneModal.querySelector('.modal-tel__text');
 var phoneModalPhone = phoneModal.querySelector('.modal-tel__phone');
@@ -161,27 +155,18 @@ window.addEventListener('click', (e) => {
     document.body.classList.remove('open-modal');
   }
 });
-
-
-
-// new 
-
-const showMore = document.querySelector('.catalog-btn-all');
-
-if(showMore){
-  showMore.addEventListener('click', function (e) {
-    if(e.target.tagName !== 'A') return;
-    e.preventDefault();
-    document.querySelector('.catalog-grid').classList.add('opened');
-    this.remove();
-  })
 }
 
-
-document.addEventListener('DOMContentLoaded', ()=> {
-  
-});
-
+function showMoreInit(){
+  if (showMore) {
+    showMore.addEventListener('click', function (e) {
+      if (e.target.tagName !== 'A') return;
+      e.preventDefault();
+      document.querySelector('.catalog-grid').classList.add('opened');
+      this.remove();
+    });
+  }
+}
 
 function increaseCount(a, b) {
   var input = b.previousElementSibling;
@@ -201,33 +186,31 @@ function decreaseCount(a, b) {
   }
 }
 
-let isOpenModalProduct = false;
-const $modal = document.querySelector('.modal-product');
+
 
 function modalAnimation(ms, target) {
-  if(isOpenModalProduct){
+  if (isOpenModalProduct) {
     target.classList.remove('opened');
     target.classList.add('closing');
-    setTimeout(()=>{
+    setTimeout(() => {
       target.classList.remove('closing');
       target.classList.add('closed');
       document.body.classList.remove('open-modal');
       isOpenModalProduct = false;
-    },ms);
-  }else{
+    }, ms);
+  } else {
     target.classList.remove('closed');
     target.classList.add('opening');
     document.body.classList.add('open-modal');
-    setTimeout(()=>{
+    setTimeout(() => {
       target.classList.remove('opening');
       target.classList.add('opened');
       isOpenModalProduct = true;
-    },ms);
+    }, ms);
   }
 }
 
-
-function renderInfoProductModal(btn, $modal, $form){
+function renderInfoProductModal(btn, $modal, $form) {
   const $card = btn.closest('.card');
   $form.reset();
   const dataCard = {
@@ -237,41 +220,96 @@ function renderInfoProductModal(btn, $modal, $form){
     prices: $card.querySelector('.card__prices').innerHTML,
     table: $card.querySelector('.card__table')?.innerHTML,
     productId: btn.getAttribute('data-product-id'),
-  }
+  };
   $form.querySelector('input[name="product"]').value = dataCard.productId;
   $modal.querySelector('.modal-product__image img').setAttribute('src', dataCard.srcImage);
   $modal.querySelector('.modal-product__title').innerHTML = dataCard.title || '';
   $modal.querySelector('.modal-product__price').innerHTML = dataCard.price || '';
   $modal.querySelector('.modal-product__list').innerHTML = dataCard.prices || '';
-  $modal.querySelector('.modal-product__table').innerHTML = dataCard.table || '';
-
+  $modal.querySelector(' .modal-product__table').innerHTML = dataCard.table || '';
 }
 
-document.querySelector('#catalog').addEventListener('click', (e)=>{
-  const clickElement = e.target;
-  if(!clickElement.getAttribute('data-product-id')) return;
-  e.preventDefault();
-  renderInfoProductModal(clickElement, $modal, form2);
-  modalAnimation(0, $modal);
-})
 
-document.querySelector('.modal-product').addEventListener('click', (e)=>{
-  if(e.target === e.currentTarget || e.target.classList.contains('modal-product__close'))
-  modalAnimation(300, $modal);
-})
+function initModalProductEvents(){
+  document.querySelector('#catalog').addEventListener('click', (e) => {
+    const clickElement = e.target;
+    if (!clickElement.getAttribute('data-product-id')) return;
+    e.preventDefault();
+    renderInfoProductModal(clickElement, $modal, form2);
+    modalAnimation(0, $modal);
+  });
+  
+  document.querySelector('.modal-product').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget || e.target.classList.contains('modal-product__close'))
+      modalAnimation(300, $modal);
+  });
+}
 
 
-const anchors = document.querySelectorAll('a[href*="#"]')
 
-for (let anchor of anchors) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
-    
-    const blockID = anchor.getAttribute('href').substr(1)
-    
-    document.getElementById(blockID).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  })
+
+
+
+
+function initAnchorScroll(){
+  for (let anchor of anchors) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      console.log(e.target.closest('.nav-menu'));
+      if(e.target.closest('.nav-mobile') && isMenuOpen){
+        openMobileMenu();
+      }
+      const blockID = anchor.getAttribute('href').substr(1);
+  
+      document.getElementById(blockID).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  }
+}
+
+
+function initAnchorActiveScroll(){
+  if (window.innerWidth > 767) {
+    let navbarLinks = document.querySelectorAll('.nav-pk a');
+    window.addEventListener('scroll', (e) => {
+      scrollpos = window.scrollY;
+      navbarLinks.forEach((link) => {
+        let section = document.querySelector(link.hash);
+        if (
+          section.offsetTop <= scrollpos + 150 &&
+          section.offsetTop + section.offsetHeight > scrollpos + 150
+        ) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+  }
+}
+
+function openMobileMenu() {
+
+  if (isMenuOpen) {
+    document.body.classList.remove('open-modal');
+    $btnBurger.classList.remove('active');
+    setTimeout(()=>{
+      $mobileNav.classList.remove('active');
+    }, 250)
+    $site.classList.remove('nav-open');
+    isMenuOpen = false;
+
+  } else {
+    document.body.classList.add('open-modal');
+    $btnBurger.classList.add('active');
+    $mobileNav.classList.add('active');
+    $site.classList.add('nav-open');
+    isMenuOpen = true;
+  }
+}
+
+function initOpenMobileMenu() {
+  $btnBurger.addEventListener('click', openMobileMenu);
 }
