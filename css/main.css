@@ -728,6 +728,7 @@ img{
 
 .about-image{
   position: relative;
+  margin-bottom: 1.5rem;
 }
 .about-image__text{
   position: absolute;
@@ -846,7 +847,7 @@ img{
     margin: 0 auto;
     margin-bottom: 1rem;
   }
-  
+
   .benefit{
     padding-bottom: 2rem;
   }
