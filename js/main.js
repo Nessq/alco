@@ -258,13 +258,22 @@ function initAnchorScroll(){
       console.log(e.target.closest('.nav-menu'));
       if(e.target.closest('.nav-mobile') && isMenuOpen){
         openMobileMenu();
-      }
+        setTimeout(()=>{
+          const blockID = anchor.getAttribute('href').substr(1);
+  
+          document.getElementById(blockID).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        },300)
+      }else{
       const blockID = anchor.getAttribute('href').substr(1);
   
       document.getElementById(blockID).scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
+    }
     });
   }
 }
