@@ -1,0 +1,53 @@
+:root{
+    --accent: #014e78;
+    --primary: #efefef;
+    --primary-light: #fff;
+    --default: #333;
+}
+
+html{
+    font-size: 16px;
+}
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
+}
+.main-wrapper{
+    min-height: 100vh;
+    background: radial-gradient(var(--primary-light), var(--primary));
+    color: var(--default);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+h2{
+    margin: 1rem 0;
+
+}
+
+.user-data{
+    border-top: 1px solid var(--default);
+}
+
+.item{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+.item .name{
+    margin-right: 5px;
+    color: var(--accent);
+    font-weight: bold;
+}
+.item .value{}
+
+.svg svg{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--accent);
+    padding: 32px;
+}
+.svg svg path{
+    fill: var(--primary);
+}

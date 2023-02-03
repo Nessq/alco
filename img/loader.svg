@@ -1,0 +1,11 @@
+<svg width="65" height="65" viewBox="0 0 65 65"  xmlns="http://www.w3.org/2000/svg">
+   <!-- Нижний круг с чёрточками -->
+<circle cx="32" cy="32" r="25" style="stroke:#333; fill:none;  stroke-width:15;
+ stroke-dasharray:3 10.08;" /> 
+   <!-- Верхний круг с одной видимой полоской -->
+ <circle transform="rotate(-90 32 32)" cx="32" cy="32" r="25" style="stroke:#ffffff; fill:none;  stroke-width:15; stroke-dasharray:3 154; stroke-dashoffset: 157" >
+       <!-- Анимация бегущей полоски -->
+ <animate attributeName="stroke-dashoffset" values="0;143.92;130.84;117.76;104.68;91.6;78.52;65.44;52.36;39.28;26.22;13.14;0" dur="0.5s" repeatCount="indefinite" calcMode="discrete"/> 
+  </circle> 
+
+   </svg>  

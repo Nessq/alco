@@ -1,0 +1,277 @@
+var sendURL = '/send.php';
+
+var inputsTel_1 = document.querySelector('.form-1 input[type="tel"]');
+var inputsTel_2 = document.querySelector('.form-2 input[type="tel"]');
+var inputsTel_3 = document.querySelector('.form-3 input[type="tel"]');
+
+var countMasks = 0;
+// var mask1 = IMask(inputsTel_1, {
+//   mask: '+{380} (99) 999-99-99',
+//   //placeholderChar: '_',
+//   lazy: false,
+// });
+
+
+var form1 = document.querySelector('.form-1');
+var form2 = document.querySelector('.form-2');
+
+
+function formError(form, text, success) {
+  var inf = form.querySelector('.form-err');
+  if (success == 'success') inf.classList.add('success');
+  else inf.classList.remove('success');
+  inf.innerHTML = text;
+}
+
+function formSend(form, mask) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+
+    const $name = form.querySelector('input[name="name"]');
+    const $tel = form.querySelector('input[name="phone"]');
+    const $productId = form.querySelector('input[name="product"]');
+    const $counts = form.querySelector('input[name="counts"]');
+    const dataForm = {};
+
+    if($name) dataForm.name = $name.value;
+    if($tel) dataForm.tel = $tel.value.replace(/\D+/g,"");
+    if($productId) dataForm.id = $productId.value;
+    if($counts) dataForm.counts = $counts.value;
+    console.log(dataForm);
+    if ((dataForm.tel.length !== 12 && dataForm.tel.length !== 10) || dataForm.name.length < 2) {
+      return formError(form, "Введіть коректний номер телефону або ім'я!");
+    }
+    if(dataForm.counts && !(dataForm.counts > 0)){
+      return formError(form, "Кількість введена не вірно!");
+    }
+    
+    form.querySelector('.form-err').innerHTML = '';
+    var btn = form.querySelector('button');
+    btn.style.opacity = '0.5';
+    btn.style.pointerEvents = 'none';
+    btn.classList.add('btn-load');
+
+
+    sendCrm(sendURL, dataForm, (res) => {
+      if (res.type === 'success') {
+        window.location.href = window.location.origin + '/thanks.php?name=' + dataForm.name + '&phone=' + dataForm.tel;
+      } else {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'all';
+        btn.classList.remove('btn-load');
+        form.reset();
+        formError(form, res.msg, res.type);
+      }
+    });
+  });
+}
+
+formSend(form1);
+formSend(form2);
+// formSend(form3, mask3);
+
+// fetch data
+
+function sendCrm(url, data, success) {
+  fetch(url, {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((res) => {
+      if (success !== undefined) success(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+// const yearsOld = localStorage.getItem('years');
+
+// if (yearsOld !== 'yes') {
+//   const $body = document.body;
+//   const $modal = document.querySelector('.modal-old');
+
+//   $body.classList.add('open-modal');
+//   $modal.style.display = 'flex';
+
+//   const $btnYes = document.querySelector('a.btn[data-old="yes"]');
+//   const $btnNo = document.querySelector('a.btn[data-old="no"]');
+
+//   $btnYes.addEventListener('click', (e) => {
+//     $body.classList.remove('open-modal');
+//     $modal.style.display = 'none';
+
+//     localStorage.setItem('years', 'yes');
+//   });
+
+//   $btnNo.addEventListener('click', (e) => {
+//     $modal.querySelector('.modal-content').innerHTML = '<div>Дякуємо за розуміння</div>';
+//   });
+// }
+
+var socialsLink = document.querySelectorAll('.socials a');
+var phoneModal = document.querySelector('.modal-tel');
+var phoneModalText = phoneModal.querySelector('.modal-tel__text');
+var phoneModalPhone = phoneModal.querySelector('.modal-tel__phone');
+var phoneModalClose = phoneModal.querySelector('.modal-tel__close');
+
+phoneModalClose.addEventListener('click', (e) => {
+  e.preventDefault();
+  phoneModal.classList.remove('open');
+  document.body.classList.remove('open-modal');
+});
+
+for (const link of socialsLink) {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    var elem = e.currentTarget;
+    var dataText = elem.dataset.text;
+    var dataPhones = JSON.parse(elem.dataset.phone, true);
+
+    phoneModalText.innerHTML = '<h3>' + dataText + '</h3>';
+
+    phoneModalPhone.innerHTML = '';
+
+    for (const key in dataPhones) {
+      if (Object.hasOwnProperty.call(dataPhones, key)) {
+        const element = dataPhones[key];
+        phoneModalPhone.innerHTML += `<a href="${element}">${key}</a>`;
+      }
+    }
+    setTimeout(() => {
+      document.body.classList.add('open-modal');
+      phoneModal.classList.add('open');
+    }, 0);
+  });
+}
+
+window.addEventListener('click', (e) => {
+  if (!phoneModal.classList.contains('open')) return;
+  if (!e.target.closest('.modal-tel')) {
+    e.preventDefault();
+    e.stopPropagation();
+    phoneModal.classList.remove('open');
+    document.body.classList.remove('open-modal');
+  }
+});
+
+
+
+// new 
+
+const showMore = document.querySelector('.catalog-btn-all');
+
+if(showMore){
+  showMore.addEventListener('click', function (e) {
+    if(e.target.tagName !== 'A') return;
+    e.preventDefault();
+    document.querySelector('.catalog-grid').classList.add('opened');
+    this.remove();
+  })
+}
+
+
+document.addEventListener('DOMContentLoaded', ()=> {
+  
+});
+
+
+function increaseCount(a, b) {
+  var input = b.previousElementSibling;
+  var value = parseInt(input.value, 10);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  input.value = value;
+}
+
+function decreaseCount(a, b) {
+  var input = b.nextElementSibling;
+  var value = parseInt(input.value, 10);
+  if (value > 1) {
+    value = isNaN(value) ? 0 : value;
+    value--;
+    input.value = value;
+  }
+}
+
+let isOpenModalProduct = false;
+const $modal = document.querySelector('.modal-product');
+
+function modalAnimation(ms, target) {
+  if(isOpenModalProduct){
+    target.classList.remove('opened');
+    target.classList.add('closing');
+    setTimeout(()=>{
+      target.classList.remove('closing');
+      target.classList.add('closed');
+      document.body.classList.remove('open-modal');
+      isOpenModalProduct = false;
+    },ms);
+  }else{
+    target.classList.remove('closed');
+    target.classList.add('opening');
+    document.body.classList.add('open-modal');
+    setTimeout(()=>{
+      target.classList.remove('opening');
+      target.classList.add('opened');
+      isOpenModalProduct = true;
+    },ms);
+  }
+}
+
+
+function renderInfoProductModal(btn, $modal, $form){
+  const $card = btn.closest('.card');
+  $form.reset();
+  const dataCard = {
+    srcImage: $card.querySelector('.card__image img').getAttribute('src'),
+    title: $card.querySelector('.card__title').textContent,
+    price: $card.querySelector('.card__price').textContent,
+    prices: $card.querySelector('.card__prices').innerHTML,
+    table: $card.querySelector('.card__table')?.innerHTML,
+    productId: btn.getAttribute('data-product-id'),
+  }
+  $form.querySelector('input[name="product"]').value = dataCard.productId;
+  $modal.querySelector('.modal-product__image img').setAttribute('src', dataCard.srcImage);
+  $modal.querySelector('.modal-product__title').innerHTML = dataCard.title || '';
+  $modal.querySelector('.modal-product__price').innerHTML = dataCard.price || '';
+  $modal.querySelector('.modal-product__list').innerHTML = dataCard.prices || '';
+  $modal.querySelector('.modal-product__table').innerHTML = dataCard.table || '';
+
+}
+
+document.querySelector('#catalog').addEventListener('click', (e)=>{
+  const clickElement = e.target;
+  if(!clickElement.getAttribute('data-product-id')) return;
+  e.preventDefault();
+  renderInfoProductModal(clickElement, $modal, form2);
+  modalAnimation(0, $modal);
+})
+
+document.querySelector('.modal-product').addEventListener('click', (e)=>{
+  if(e.target === e.currentTarget || e.target.classList.contains('modal-product__close'))
+  modalAnimation(300, $modal);
+})
+
+
+const anchors = document.querySelectorAll('a[href*="#"]')
+
+for (let anchor of anchors) {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+    
+    const blockID = anchor.getAttribute('href').substr(1)
+    
+    document.getElementById(blockID).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  })
+}
