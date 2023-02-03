@@ -794,6 +794,11 @@ img{
   .phone-numbers{
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
+
+  .benefit-item{
+    margin-bottom: 2rem;
+  }
+
 }
 
 @media (max-width: 575px){
@@ -840,6 +845,10 @@ img{
     max-width: 250px;
     margin: 0 auto;
     margin-bottom: 1rem;
+  }
+  
+  .benefit{
+    padding-bottom: 2rem;
   }
 }
 
