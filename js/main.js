@@ -213,6 +213,7 @@ function modalAnimation(ms, target) {
 function renderInfoProductModal(btn, $modal, $form) {
   const $card = btn.closest('.card');
   $form.reset();
+  $form.querySelector('.form-err').innerHTML = '';
   const dataCard = {
     srcImage: $card.querySelector('.card__image img').getAttribute('src'),
     title: $card.querySelector('.card__title').textContent,
