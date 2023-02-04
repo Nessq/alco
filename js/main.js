@@ -282,14 +282,14 @@ function initAnchorScroll(){
 
 function initAnchorActiveScroll(){
   if (window.innerWidth > 767) {
-    let navbarLinks = document.querySelectorAll('.nav-pk a');
+    let navbarLinks = document.querySelectorAll('.nav-pk a[href*="#"]');
     window.addEventListener('scroll', (e) => {
-      scrollpos = window.scrollY;
       navbarLinks.forEach((link) => {
         let section = document.querySelector(link.hash);
+        let {top, height} = section.getBoundingClientRect();
         if (
-          section.offsetTop <= scrollpos + 150 &&
-          section.offsetTop + section.offsetHeight > scrollpos + 150
+          top <= 150 &&
+          top + height > 150
         ) {
           link.classList.add('active');
         } else {
