@@ -84,7 +84,7 @@ img{
 .modal-tel__phone a{
   font-size: 1.5rem;
   display: block;
-  color: var(--btn);
+  color: var(--accent2);
   border: 1px dashed var(--btn);
   margin: 1rem 0;
   padding: 0.5rem 0;
@@ -92,7 +92,7 @@ img{
 .modal-tel__phone a:hover{
   text-decoration: none;
   color: #fff;
-  background-color: var(--btn);
+  background-color: var(--btn-hover);
 }
 
 
@@ -543,6 +543,16 @@ img{
 }
 
 .card{
+
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform: translate3d(0,0,0);
+  transform: translateZ(0);
+
   padding: 1rem;
   border: 1px solid transparent;
   cursor: pointer;
