@@ -445,7 +445,7 @@ img{
   right: 0;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
   z-index: 1;
 }
 .catalog > div{
