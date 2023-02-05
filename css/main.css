@@ -1,4 +1,4 @@
-
+/* 
 
 :root{
   --dark: #333;
@@ -18,6 +18,31 @@
 
   --btn: var(--accent);
   --btn-hover: #31a8db;
+  --grid-catalog: 250px;
+  --fz: 16px;
+} */
+
+:root{
+  --dark: #333;
+  --dark-hover: #454545;
+  --white: #fff;
+  
+
+  --bg: #F3F5F7;
+  --bg-dark: #123356;
+  --bg-light: #EBF3FC;
+  --bg-divider: rgba(18, 52, 86, 0.1);
+  --bg-divider-alternate: rgba(243, 245, 247, 0.2);
+  --accent: #3385E2;
+  /* --accent2: #ffe874; */
+  --accent2: #ffc40e;
+  --primary: #123356;
+  --primary-alternate: #fff;
+
+  --input-focus: #374259;
+
+  --btn: var(--accent);
+  --btn-hover: #2068ba;
   --grid-catalog: 250px;
   --fz: 16px;
 }
@@ -84,14 +109,14 @@ img{
 .modal-tel__phone a{
   font-size: 1.5rem;
   display: block;
-  color: var(--accent2);
+  color: var(--accent);
   border: 1px dashed var(--btn);
   margin: 1rem 0;
   padding: 0.5rem 0;
 }
 .modal-tel__phone a:hover{
   text-decoration: none;
-  color: #fff;
+  color: var(--accent2);
   background-color: var(--btn-hover);
 }
 
@@ -105,8 +130,8 @@ img{
   bottom: 1rem;
   right: 1rem;
   z-index: 10;
-  background-color: var(--bg-dark);
-  padding: 0.5rem;
+  background-color: var(--bg);
+  padding: 0.2rem 0.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border-radius: 1rem;
 }
@@ -145,6 +170,7 @@ img{
       border-bottom-right-radius: 0;
       flex-wrap: wrap;
       border-radius: 0;
+      box-shadow: 0 -2px 3px rgba(0,0,0,.13);
   }
   .social-link{
       flex: 1;
@@ -168,7 +194,8 @@ img{
 }
 
 .phone-numbers{
-  display: grid;
+  display: flex;
+  justify-content: flex-end;
   gap: 0.2rem 1rem;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
@@ -191,7 +218,7 @@ img{
   line-height: 1;
   color: var(--white);
   display: inline-block;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1px;
@@ -243,7 +270,7 @@ img{
   position: absolute;
   width: 30px;
   height: 2px;
-  background-color: #fff;
+  background-color: var(--bg-dark);
 }
 
 
@@ -270,7 +297,7 @@ img{
   display: inline-block;
   padding: 0.5rem 1rem;
   font-weight: 500;
-  color: var(--primary);
+  color: var(--primary-alternate);
 }
 
 .nav-container a:hover, .nav-container a.active{
@@ -294,12 +321,13 @@ img{
   z-index: 1;
   display: none;
   padding: 2rem 1.5rem;
+  color: var(--primary-alternate);
 }
 
 .nav-mobile .phone-numbers{
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--bg-divider);
+  border-top: 1px solid var(--bg-divider-alternate);
   display: block;
 }
 
@@ -310,16 +338,20 @@ img{
 .TOV{
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--bg-divider);
+  border-bottom: 1px solid var(--bg-divider-alternate);
 }
 
 .nav-mobile .nav-container a{
   display: block;
-  color: var(--primary);
+  color: var(--primary-alternate);
   font-weight: 400;
   padding-left: 0;
 }
 
+
+.nav-mobile .phone-numbers-item a{
+  color: var(--primary-alternate);
+}
 
 .nav-mobile.active{
   display: block;
@@ -338,6 +370,7 @@ img{
 .main{
   position: relative;
   background: radial-gradient(var(--bg), var(--bg-dark));
+  color: var(--primary-alternate);
 }
 
 .main::after{
@@ -347,7 +380,7 @@ img{
   bottom: 0;
   left: 0;
   position: absolute;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.45);
 }
 
 .main img{
@@ -370,6 +403,7 @@ img{
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--accent2);
+  text-shadow: 0 0 1px var(--bg-dark);
 }
 .main-container p{
   font-size: 1.25rem;
@@ -381,10 +415,11 @@ img{
   right: 0;
   bottom: 0;
   left: 0;
-  background-size: 90%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% center;
-  opacity: 0.35;
+  background-attachment: fixed;
+  opacity: 1;
   z-index: 0;
 }
 
@@ -416,7 +451,7 @@ img{
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--accent2);
+  color: var(--accent);
 }
 .advantages-item__text p{
   font-weight: 300;
@@ -431,14 +466,14 @@ img{
 .catalog{
   margin: 5rem 0;
   position: relative;
-  background-image: url('../img/bg.jpeg');
-  background-attachment: fixed;
+  /* background-image: url('../img/bg.jpeg');
+  background-attachment: fixed; */
   background-position: center;
   padding-bottom: 3rem;
 }
 
 .catalog::before{
-  content:'';
+  /* content:''; */
   top: 0;
   bottom: 0;
   left: 0;
@@ -475,9 +510,10 @@ img{
   font-weight: 600;
   font-size: 2rem;
   padding: 0.5rem 0;
-  border-bottom: 2px solid var(--accent2);
+  border-top: 1px solid var(--bg-divider);
+  border-bottom: 1px solid var(--bg-divider);
   margin-bottom: 1.5rem;
-  text-shadow: 0 0 3px var(--bg-dark);
+  /* text-shadow: 0 0 3px var(--bg-dark); */
 }
 
 .catalog-grid{
@@ -543,7 +579,6 @@ img{
 }
 
 .card{
-
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   -webkit-transform: translate3d(0,0,0);
@@ -560,8 +595,8 @@ img{
   position: relative;
   display: flex;
   flex-direction: column;  
-  background: rgba(0,0,0,0.14);
-  backdrop-filter: blur(10px);
+  /* background: rgba(0,0,0,0.14);
+  backdrop-filter: blur(10px); */
   /* border-radius: 1rem; */
 }
 
@@ -570,8 +605,8 @@ img{
     display: none !important;
   }
   .card:hover{
-    background-color: var(--bg-dark);
-    /* border: 1px solid var(--bg-divider); */
+    /* background-color: var(--bg-dark); */
+    border: 1px solid var(--bg-divider);
   }
 }
 
@@ -594,7 +629,7 @@ img{
   text-align: center;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--accent2);
+  color: var(--accent);
 }
 
 .card__prices{
@@ -677,6 +712,7 @@ img{
   background-color: var(--bg-dark);
   padding: 3rem 0;
   margin: 5rem 0;
+  color: var(--primary-alternate);
 }
 .form input{
   width: 100%;
@@ -696,8 +732,15 @@ img{
   opacity: 0.8;
 }
 .form input:focus{
-  background-color: var(--input-focus);
+  /* background-color: var(--input-focus); */
   border-color: var(--btn-hover);
+}
+
+.section-form .form input{
+  color: var(--primary-alternate);
+}
+.section-form .form input::placeholder{
+  color: var(--primary-alternate);
 }
 
 .form button{
@@ -744,7 +787,7 @@ img{
   background: transparent;
   border-left: 1px solid var(--accent);
   border-right: 1px solid var(--accent);
-  color: #fff;
+  color: var(--primary);
   appearance: none;
   outline: 0;
   height: 50px;
@@ -764,7 +807,7 @@ img{
 }
 
 .counter span:hover{
-  color: var(--primary);
+  color: var(--primary-alternate);
   background-color: var(--btn-hover);
 }
 
@@ -822,7 +865,7 @@ img{
   max-width: 700px;
   z-index: 100;
   background-color: var(--bg);
-  box-shadow: 0 0 10px 0 var(--bg);
+  /* box-shadow: 0 0 10px 0 var(--bg); */
   position: relative;
   padding: 2rem 3rem;
 }
@@ -876,7 +919,7 @@ img{
 .modal-product__price{
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--accent2);
+  color: var(--accent);
 }
 .modal-product__list{
   margin: 0;
@@ -924,7 +967,7 @@ img{
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background-color: var(--accent);
+  background-color: var(--accent2);
   padding: 0.5rem 1.25rem;
   border-radius: 1.5rem;
   z-index: 2;
@@ -958,14 +1001,18 @@ img{
 
 @media (max-width: 1199px){
   .phone-numbers{
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
   }
 }
 
 @media (max-width: 991px){
   .phone-numbers{
+    flex-wrap: wrap;
+    justify-content: flex-start;  
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
+
+
 
   .advantages .row > div:not(:last-child) .advantages-item{
     border-right: 0;
@@ -976,6 +1023,11 @@ img{
 
 }
 @media (max-width: 767px){
+  .footer .phone-numbers{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
   .PK{
     display: none !important;
   }
@@ -984,7 +1036,7 @@ img{
     top: 0;
     z-index: 10;
     padding: 0.5rem 0;
-    border-bottom: 1px solid var(--bg-divider);
+    box-shadow: 0 2px 3px rgba(0,0,0,.13);
   }
   .header .container{
     width: 100%;
@@ -1004,6 +1056,10 @@ img{
   }
   .nav-container{
     display: block;
+  }
+  .footer .small-text{
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -1029,6 +1085,7 @@ img{
   }
   .main-container h1{
     font-size: 2rem;
+
   }
   .main-container p{
     font-size: 1rem;
@@ -1038,10 +1095,7 @@ img{
     margin-bottom: 0;
   }
 
-  .footer .small-text{
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
+
 
   .modal-product__body{
     padding: 2rem 1rem;
