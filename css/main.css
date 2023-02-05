@@ -43,6 +43,7 @@
 
   --btn: var(--accent);
   --btn-hover: #2068ba;
+  --btn-hover: #3694ff;
   --grid-catalog: 250px;
   --fz: 16px;
 }
@@ -578,6 +579,10 @@ img{
     --grid-catalog: 140px;
     gap: 15px;
   }
+
+  .card__prices li{
+    font-size: 0.78rem !important;
+  }
   .card{
     padding: 0 !important;
   }
@@ -600,6 +605,7 @@ img{
   position: relative;
   display: flex;
   flex-direction: column;  
+  background-color: var(--white);
   /* background: rgba(0,0,0,0.14);
   backdrop-filter: blur(10px); */
   /* border-radius: 1rem; */
@@ -737,7 +743,7 @@ img{
   opacity: 0.8;
 }
 .form input:focus{
-  /* background-color: var(--input-focus); */
+  /* background-color: rgba(255,255,255,1); */
   border-color: var(--btn-hover);
 }
 
@@ -1073,9 +1079,17 @@ img{
     margin: 3rem 0;
   }
 
-  .advantages{
-    padding-bottom: 3rem;
+  .advantages-item__img img{
+    width: 30px;
+    height: 30px;
   }
+  .advantages-item__img{
+    padding: 0.6rem;
+  }
+
+  /* .advantages{
+    padding-bottom: 3rem;
+  } */
 
   .catalog{
     margin-top: -3rem;
