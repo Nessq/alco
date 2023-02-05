@@ -441,6 +441,11 @@ img{
 }
 
 
+.advantages-item__img{
+  padding: 1rem;
+  background-color: var(--accent2);
+  border-radius: 50%;
+}
 .advantages-item__img img{
   width: 40px;
   height: 40px;
