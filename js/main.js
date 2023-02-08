@@ -216,7 +216,7 @@ function renderInfoProductModal(btn, $modal, $form) {
   $form.querySelector('.form-err').innerHTML = '';
   const dataCard = {
     srcImage: $card.querySelector('.card__image img').getAttribute('src'),
-    title: $card.querySelector('.card__t itle').textContent,
+    title: $card.querySelector('.card__title').textContent,
     price: $card.querySelector('.card__price').textContent,
     prices: $card.querySelector('.card__prices').innerHTML,
     table: $card.querySelector('.card__table')?.innerHTML,
