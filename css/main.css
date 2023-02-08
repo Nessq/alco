@@ -29,14 +29,14 @@
   
 
   --bg: #F3F5F7;
-  --bg-dark: #123356;
+  --bg-dark: #172536;
   --bg-light: #EBF3FC;
   --bg-divider: rgba(18, 52, 86, 0.1);
   --bg-divider-alternate: rgba(243, 245, 247, 0.2);
-  --accent: #3385E2;
+  --accent: #2276d6;
   /* --accent2: #ffe874; */
   --accent2: #ffc40e;
-  --primary: #123356;
+  --primary: #35414f;
   --primary-alternate: #fff;
 
   --input-focus: #374259;
@@ -59,7 +59,7 @@ html{
   font-size: var(--fz);
 }
 body{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--primary);
   font-size: 1rem;
   background-color: var(--bg);
@@ -222,7 +222,7 @@ img{
   border-radius: 0.5rem;
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   background-color: var(--btn);
 }
 

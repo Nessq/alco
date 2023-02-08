@@ -216,7 +216,7 @@ function renderInfoProductModal(btn, $modal, $form) {
   $form.querySelector('.form-err').innerHTML = '';
   const dataCard = {
     srcImage: $card.querySelector('.card__image img').getAttribute('src'),
-    title: $card.querySelector('.card__title').textContent,
+    title: $card.querySelector('.card__t itle').textContent,
     price: $card.querySelector('.card__price').textContent,
     prices: $card.querySelector('.card__prices').innerHTML,
     table: $card.querySelector('.card__table')?.innerHTML,
@@ -245,12 +245,6 @@ function initModalProductEvents(){
       modalAnimation(300, $modal);
   });
 }
-
-
-
-
-
-
 
 function initAnchorScroll(){
   for (let anchor of anchors) {
@@ -294,6 +288,7 @@ function initAnchorActiveScroll(){
           link.classList.add('active');
         } else {
           link.classList.remove('active');
+          
         }
       });
     });
@@ -310,7 +305,6 @@ function openMobileMenu() {
     }, 250)
     $site.classList.remove('nav-open');
     isMenuOpen = false;
-
   } else {
     document.body.classList.add('open-modal');
     $btnBurger.classList.add('active');
@@ -322,4 +316,14 @@ function openMobileMenu() {
 
 function initOpenMobileMenu() {
   $btnBurger.addEventListener('click', openMobileMenu);
+}
+
+async function fetchIsDetect() {
+  const api = new Promise((r,rj)=> {
+    r(100).then((data)=> {
+      rj();
+       
+    });
+  
+  });
 }

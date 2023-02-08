@@ -75,6 +75,20 @@ img{
 .socials p {
     display: none;
 }
+
+.social-link{
+    opacity: 0.75;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ 
+ .social-link:hover{
+     opacity: 1;
+ }
+ 
 @media screen and (max-width: 565px) {
     .socials p{
         /* display: block; */
@@ -101,18 +115,7 @@ img{
     }
 }
 
-.social-link{
-   opacity: 0.75;
-   width: 48px;
-   height: 48px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
 
-.social-link:hover{
-    opacity: 1;
-}
 
 
 .modal-tel{
