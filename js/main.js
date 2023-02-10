@@ -1,5 +1,10 @@
 var sendURL = '/send.php';
 
+if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+} else {
+  document.body.classList.add('no-touch');
+}
+
 var inputsTel_1 = document.querySelector('.form-1 input[type="tel"]');
 var inputsTel_2 = document.querySelector('.form-2 input[type="tel"]');
 var inputsTel_3 = document.querySelector('.form-3 input[type="tel"]');
@@ -35,11 +40,38 @@ initAnchorScroll();
 initAnchorActiveScroll();
 initModalProductEvents();
 initOpenMobileMenu();
+initFixedMenu();
 // var mask1 = IMask(inputsTel_1, {
 //   mask: '+{380} (99) 999-99-99',
 //   //placeholderChar: '_',
 //   lazy: false,
 // });
+
+function initFixedMenu(){
+  const $header = document.querySelector('header.header');
+  const $nav = document.querySelector('.nav-pk');
+  if(window.innerWidth > 767) {;
+    const func = () => {
+      if($header.offsetHeight <= window.scrollY){
+        $nav.classList.add('fixed');
+      }else{
+        $nav.classList.remove('fixed');
+      }
+    }
+    func();
+    window.addEventListener('scroll', func);
+  }else{
+    const func = () => {
+      if(window.scrollY > 150){
+        $header.classList.add('scrolled');
+      }else{
+        $header.classList.remove('scrolled');
+      }
+    }
+    func();
+    window.addEventListener('scroll', func);
+  }
+}
 
 function formError(form, text, success) {
   var inf = form.querySelector('.form-err');
@@ -62,7 +94,7 @@ function formSend(form, mask) {
     if ($tel) dataForm.tel = $tel.value.replace(/\D+/g, '');
     if ($productId) dataForm.id = $productId.value;
     if ($counts) dataForm.counts = $counts.value;
-    console.log(dataForm);
+
     if ((dataForm.tel.length !== 12 && dataForm.tel.length !== 10) || dataForm.name.length < 2) {
       return formError(form, "Введіть коректний номер телефону або ім'я!");
     }
@@ -241,7 +273,7 @@ function initModalProductEvents(){
   });
   
   document.querySelector('.modal-product').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget || e.target.classList.contains('modal-product__close'))
+    if (e.target === e.currentTarget || e.target.closest('.modal-product__close'))
       modalAnimation(300, $modal);
   });
 }
@@ -250,7 +282,6 @@ function initAnchorScroll(){
   for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      console.log(e.target.closest('.nav-menu'));
       if(e.target.closest('.nav-mobile') && isMenuOpen){
         openMobileMenu();
         setTimeout(()=>{
@@ -300,9 +331,9 @@ function openMobileMenu() {
   if (isMenuOpen) {
     document.body.classList.remove('open-modal');
     $btnBurger.classList.remove('active');
-    setTimeout(()=>{
+   
       $mobileNav.classList.remove('active');
-    }, 250)
+   
     $site.classList.remove('nav-open');
     isMenuOpen = false;
   } else {
