@@ -104,7 +104,6 @@ function formSend(form, mask) {
 
     form.querySelector('.form-err').innerHTML = '';
     var btn = form.querySelector('button');
-    btn.style.opacity = '0.5';
     btn.style.pointerEvents = 'none';
     btn.classList.add('btn-load');
 
@@ -117,7 +116,6 @@ function formSend(form, mask) {
 
         window.location.href = window.location.origin + '/thanks.php' + srch + nameAndPhone;
       } else {
-        btn.style.opacity = '1';
         btn.style.pointerEvents = 'all';
         btn.classList.remove('btn-load');
         form.reset();
