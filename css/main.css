@@ -1375,6 +1375,10 @@ a.btn:hover, a.btn:active{
     text-decoration: none !important; */
   }
 
+  .form-err{
+    font-size: 14px;
+    line-height: 2.5;
+  }
   .about-container{
     gap: 1.25rem;
   }
@@ -1529,8 +1533,8 @@ a.btn:hover, a.btn:active{
   }
   .modal-product {
     align-items: flex-start;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .modal-product__image {
     max-width: 250px;
