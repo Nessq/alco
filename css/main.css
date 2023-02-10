@@ -1218,7 +1218,15 @@ a.btn:hover, a.btn:active{
 
 .form-err {
   color: rgb(255, 166, 0);
-  font-weight: 500;
+  font-weight: 600;
+  font-family: var(--font-title);
+  line-height: 1.2 !important;
+}
+.form-err p{
+  font-size: 1rem;
+}
+.form-err p{
+  margin: 1rem 0;
 }
 
 .form-err.success {
@@ -1376,8 +1384,7 @@ a.btn:hover, a.btn:active{
   }
 
   .form-err{
-    font-size: 14px;
-    line-height: 2.5;
+    font-size: 12px;
   }
   .about-container{
     gap: 1.25rem;
@@ -1509,6 +1516,9 @@ a.btn:hover, a.btn:active{
     height: 48px;
   }
 
+  .form-err p{
+    font-size: .81rem;
+  }
 
   /* .advantages{
     padding-bottom: 3rem;

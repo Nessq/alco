@@ -77,7 +77,7 @@ function formError(form, text, success) {
   var inf = form.querySelector('.form-err');
   if (success == 'success') inf.classList.add('success');
   else inf.classList.remove('success');
-  inf.innerHTML = text;
+  inf.innerHTML = '<p>'+ text +'</p>';
 }
 
 function formSend(form, mask) {
