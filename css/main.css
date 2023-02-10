@@ -141,10 +141,13 @@ img {
 .modal-tel__phone a {
   font-size: 1.5rem;
   display: block;
-  color: var(--accent);
+  color: var(--primary);
   border: 1px dashed var(--btn);
   margin: 1rem 0;
   padding: 0.5rem 0;
+}
+.modal-tel__phone a:hover{
+  text-decoration: none;
 }
 .no-touch .modal-tel__phone a:hover {
   text-decoration: none;
@@ -1327,6 +1330,11 @@ a.btn:hover, a.btn:active{
   }
 }
 @media (max-width: 767px) {
+
+  .fix-mobile-scroll{
+    position: relative;
+    top: -60px;
+  }
   .main{
     padding-top: 100px;
   }

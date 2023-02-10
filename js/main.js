@@ -1,6 +1,6 @@
 var sendURL = '/send.php';
 
-if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+if ('ontouchstart' in window || (window.DocumentTouch && document instanceof DocumentTouch)) {
 } else {
   document.body.classList.add('no-touch');
 }
@@ -47,27 +47,27 @@ initFixedMenu();
 //   lazy: false,
 // });
 
-function initFixedMenu(){
+function initFixedMenu() {
   const $header = document.querySelector('header.header');
   const $nav = document.querySelector('.nav-pk');
-  if(window.innerWidth > 767) {;
+  if (window.innerWidth > 767) {
     const func = () => {
-      if($header.offsetHeight <= window.scrollY){
+      if ($header.offsetHeight <= window.scrollY) {
         $nav.classList.add('fixed');
-      }else{
+      } else {
         $nav.classList.remove('fixed');
       }
-    }
+    };
     func();
     window.addEventListener('scroll', func);
-  }else{
+  } else {
     const func = () => {
-      if(window.scrollY > 150){
+      if (window.scrollY > 150) {
         $header.classList.add('scrolled');
-      }else{
+      } else {
         $header.classList.remove('scrolled');
       }
-    }
+    };
     func();
     window.addEventListener('scroll', func);
   }
@@ -77,7 +77,7 @@ function formError(form, text, success) {
   var inf = form.querySelector('.form-err');
   if (success == 'success') inf.classList.add('success');
   else inf.classList.remove('success');
-  inf.innerHTML = '<p>'+ text +'</p>';
+  inf.innerHTML = '<p>' + text + '</p>';
 }
 
 function formSend(form, mask) {
@@ -110,8 +110,12 @@ function formSend(form, mask) {
 
     sendCrm(sendURL, dataForm, (res) => {
       if (res.type === 'success') {
-        window.location.href =
-          window.location.origin + '/thanks.php?name=' + dataForm.name + '&phone=' + dataForm.tel;
+        let nameAndPhone = 'name=' + dataForm.name + '&phone=' + dataForm.tel;
+        let srch = '';
+        if (window.location.search) srch = window.location.search;
+        srch ? (nameAndPhone = '&' + nameAndPhone) : (nameAndPhone = '?' + nameAndPhone);
+
+        window.location.href = window.location.origin + '/thanks.php' + srch + nameAndPhone;
       } else {
         btn.style.opacity = '1';
         btn.style.pointerEvents = 'all';
@@ -143,53 +147,53 @@ function sendCrm(url, data, success) {
 
 function newSocialApp() {
   var socialsLink = document.querySelectorAll('.socials a');
-var phoneModal = document.querySelector('.modal-tel');
-var phoneModalText = phoneModal.querySelector('.modal-tel__text');
-var phoneModalPhone = phoneModal.querySelector('.modal-tel__phone');
-var phoneModalClose = phoneModal.querySelector('.modal-tel__close');
+  var phoneModal = document.querySelector('.modal-tel');
+  var phoneModalText = phoneModal.querySelector('.modal-tel__text');
+  var phoneModalPhone = phoneModal.querySelector('.modal-tel__phone');
+  var phoneModalClose = phoneModal.querySelector('.modal-tel__close');
 
-phoneModalClose.addEventListener('click', (e) => {
-  e.preventDefault();
-  phoneModal.classList.remove('open');
-  document.body.classList.remove('open-modal');
-});
-
-for (const link of socialsLink) {
-  link.addEventListener('click', (e) => {
+  phoneModalClose.addEventListener('click', (e) => {
     e.preventDefault();
-    var elem = e.currentTarget;
-    var dataText = elem.dataset.text;
-    var dataPhones = JSON.parse(elem.dataset.phone, true);
+    phoneModal.classList.remove('open');
+    document.body.classList.remove('open-modal');
+  });
 
-    phoneModalText.innerHTML = '<h3>' + dataText + '</h3>';
+  for (const link of socialsLink) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      var elem = e.currentTarget;
+      var dataText = elem.dataset.text;
+      var dataPhones = JSON.parse(elem.dataset.phone, true);
 
-    phoneModalPhone.innerHTML = '';
+      phoneModalText.innerHTML = '<h3>' + dataText + '</h3>';
 
-    for (const key in dataPhones) {
-      if (Object.hasOwnProperty.call(dataPhones, key)) {
-        const element = dataPhones[key];
-        phoneModalPhone.innerHTML += `<a href="${element}">${key}</a>`;
+      phoneModalPhone.innerHTML = '';
+
+      for (const key in dataPhones) {
+        if (Object.hasOwnProperty.call(dataPhones, key)) {
+          const element = dataPhones[key];
+          phoneModalPhone.innerHTML += `<a href="${element}">${key}</a>`;
+        }
       }
+      setTimeout(() => {
+        document.body.classList.add('open-modal');
+        phoneModal.classList.add('open');
+      }, 0);
+    });
+  }
+
+  window.addEventListener('click', (e) => {
+    if (!phoneModal.classList.contains('open')) return;
+    if (!e.target.closest('.modal-tel')) {
+      e.preventDefault();
+      e.stopPropagation();
+      phoneModal.classList.remove('open');
+      document.body.classList.remove('open-modal');
     }
-    setTimeout(() => {
-      document.body.classList.add('open-modal');
-      phoneModal.classList.add('open');
-    }, 0);
   });
 }
 
-window.addEventListener('click', (e) => {
-  if (!phoneModal.classList.contains('open')) return;
-  if (!e.target.closest('.modal-tel')) {
-    e.preventDefault();
-    e.stopPropagation();
-    phoneModal.classList.remove('open');
-    document.body.classList.remove('open-modal');
-  }
-});
-}
-
-function showMoreInit(){
+function showMoreInit() {
   if (showMore) {
     showMore.addEventListener('click', function (e) {
       if (e.target.tagName !== 'A') return;
@@ -217,8 +221,6 @@ function decreaseCount(a, b) {
     input.value = value;
   }
 }
-
-
 
 function modalAnimation(ms, target) {
   if (isOpenModalProduct) {
@@ -262,8 +264,7 @@ function renderInfoProductModal(btn, $modal, $form) {
   $modal.querySelector(' .modal-product__table').innerHTML = dataCard.table || '';
 }
 
-
-function initModalProductEvents(){
+function initModalProductEvents() {
   document.querySelector('#catalog').addEventListener('click', (e) => {
     const clickElement = e.target;
     if (!clickElement.getAttribute('data-product-id')) return;
@@ -271,55 +272,50 @@ function initModalProductEvents(){
     renderInfoProductModal(clickElement, $modal, form2);
     modalAnimation(0, $modal);
   });
-  
+
   document.querySelector('.modal-product').addEventListener('click', (e) => {
     if (e.target === e.currentTarget || e.target.closest('.modal-product__close'))
       modalAnimation(300, $modal);
   });
 }
 
-function initAnchorScroll(){
+function initAnchorScroll() {
   for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      if(e.target.closest('.nav-mobile') && isMenuOpen){
+      if (e.target.closest('.nav-mobile') && isMenuOpen) {
         openMobileMenu();
-        setTimeout(()=>{
+        setTimeout(() => {
           const blockID = anchor.getAttribute('href').substr(1);
-  
+
           document.getElementById(blockID).scrollIntoView({
             behavior: 'smooth',
             block: 'start',
           });
-        },300)
-      }else{
-      const blockID = anchor.getAttribute('href').substr(1);
-  
-      document.getElementById(blockID).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
+        }, 300);
+      } else {
+        const blockID = anchor.getAttribute('href').substr(1);
+
+        document.getElementById(blockID).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
     });
   }
 }
 
-
-function initAnchorActiveScroll(){
+function initAnchorActiveScroll() {
   if (window.innerWidth > 767) {
     let navbarLinks = document.querySelectorAll('.nav-pk a[href*="#"]');
     window.addEventListener('scroll', (e) => {
       navbarLinks.forEach((link) => {
         let section = document.querySelector(link.hash);
-        let {top, height} = section.getBoundingClientRect();
-        if (
-          top <= 150 &&
-          top + height > 150
-        ) {
+        let { top, height } = section.getBoundingClientRect();
+        if (top <= 150 && top + height > 150) {
           link.classList.add('active');
         } else {
           link.classList.remove('active');
-          
         }
       });
     });
@@ -327,13 +323,12 @@ function initAnchorActiveScroll(){
 }
 
 function openMobileMenu() {
-
   if (isMenuOpen) {
     document.body.classList.remove('open-modal');
     $btnBurger.classList.remove('active');
-   
-      $mobileNav.classList.remove('active');
-   
+
+    $mobileNav.classList.remove('active');
+
     $site.classList.remove('nav-open');
     isMenuOpen = false;
   } else {
@@ -350,11 +345,9 @@ function initOpenMobileMenu() {
 }
 
 async function fetchIsDetect() {
-  const api = new Promise((r,rj)=> {
-    r(100).then((data)=> {
+  const api = new Promise((r, rj) => {
+    r(100).then((data) => {
       rj();
-       
     });
-  
   });
 }
