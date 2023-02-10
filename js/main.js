@@ -62,7 +62,7 @@ function initFixedMenu() {
     window.addEventListener('scroll', func);
   } else {
     const func = () => {
-      if (window.scrollY > 150) {
+      if (window.scrollY > 0) {
         $header.classList.add('scrolled');
       } else {
         $header.classList.remove('scrolled');
