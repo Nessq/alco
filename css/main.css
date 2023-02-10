@@ -984,7 +984,7 @@ a.btn:hover, a.btn:active{
 
 .footer {
   background-color: #282828;
-  padding: 3.125rem 0;
+  padding: 2rem 0 1.25rem;
 }
 
 .counter {
@@ -1342,6 +1342,9 @@ a.btn:hover, a.btn:active{
 }
 @media (max-width: 767px) {
 
+  .catalog{
+    padding-bottom: 0 !important;
+  }
   .fix-mobile-scroll{
     position: relative;
     top: -60px;
